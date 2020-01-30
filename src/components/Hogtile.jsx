@@ -59,7 +59,7 @@ export default class Hogtile extends Component {
             </div>
             )
         } else {
-            return (this.renderBasicPig())
+            return (this.state.details ? this.renderHogInfo():this.renderBasicPig())
         }
     }
 

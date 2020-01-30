@@ -35,7 +35,6 @@ export class Tiles extends Component {
 
     render() {
         // console.log(this.props.weighted)
-
         return (
             <div className = 'ui grid container'>
                 {this.renderFilters()}
