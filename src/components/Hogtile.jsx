@@ -38,7 +38,7 @@ export default class Hogtile extends Component {
             <div>
                 <button onClick = {() => this.onClickHide()}> Hide</button>
                 <br></br>
-                <img onClick = {this.onClick} src = {require(`../hog-imgs/${this.pigNamePictureFormat()}.jpg`)}></img>
+                <img style = {pictureStyle} onClick = {this.onClick} src = {require(`../hog-imgs/${this.pigNamePictureFormat()}.jpg`)}></img>
             </div>
         )
     }
@@ -78,4 +78,8 @@ export default class Hogtile extends Component {
             </div>
         )
     }
+}
+
+const pictureStyle ={
+    cursor: 'pointer'
 }
