@@ -3,6 +3,14 @@
   text-align: center;
 }
 
+.ui.grid.container .show {
+  display: block;
+}
+
+.ui.grid.container .hidden  {
+  display: none !important;
+}
+
 .TwirlyPig {
   transition: all 3s ease-in-out;
   display: inline;
