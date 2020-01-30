@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 export default class Hogtile extends Component {
 
     state = {
-        details: false
+        details: false,
+        hidden: false
     }
 
     onClick = (e) => {
@@ -15,7 +16,6 @@ export default class Hogtile extends Component {
 
     renderHogInfo = () => {
         const {name, specialty, greased, weight} = this.props.hog
-
         return (
             <div>
                 <p> I am: {name}</p>
@@ -27,22 +27,54 @@ export default class Hogtile extends Component {
         )
     }
 
-    onClickGoBack = (e) => {
-        this.setState({details:false})
-    }
-
     pigNamePictureFormat = () => {
         let splitName = this.props.hog.name.split(' ')
         let joinedName = splitName.join('_')
         return joinedName.toLowerCase()
     }
+
+    renderBasicPig = () => {
+        return (
+            <div>
+                <button onClick = {() => this.onClickHide()}> Hide</button>
+                <br></br>
+                <img onClick = {this.onClick} src = {require(`../hog-imgs/${this.pigNamePictureFormat()}.jpg`)}></img>
+            </div>
+        )
+    }
+
+    onClickHide = () => {
+        this.setState({hidden: true})
+    }
+
+    onClickUnhide = () => {
+        this.setState({hidden: false})
+    }
+
+    renderHog = () => {
+        if(this.state.hidden){
+            return(
+            <div>
+                <button onClick = {this.onClickUnhide}>Unhide</button>
+            </div>
+            )
+        } else {
+            return (this.renderBasicPig())
+        }
+    }
+
+    onClickGoBack = (e) => {
+        this.setState({details:false})
+    }
+
+
     render() {
         // console.log(this.props)
         const {name, specialty, greased, weight} = this.props.hog
         return (
             <div className = 'ui eight wide column'>
                     <h3>{name}</h3>
-                    {this.state.details ?  this.renderHogInfo():<img onClick = {this.onClick} src = {require(`../hog-imgs/${this.pigNamePictureFormat()}.jpg`)}></img>}
+                    {this.renderHog()}
             </div>
         )
     }
