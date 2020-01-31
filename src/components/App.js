@@ -3,13 +3,13 @@ import '../App.css';
 import Nav from './Nav'
 import hogs from '../porkers_data';
 import HogContainer from './HogContainer'
+import FilterContainer from './FilterContainer';
 
 
 class App extends Component {
 
   state = {
     hogsData: hogs,
-    greasedHogs: [],
     sortedByName: [],
     filter: false,
   }
@@ -17,12 +17,13 @@ class App extends Component {
   filterPigs = () => {
     if(this.state.filter){
       this.setState({
+        hogsData: hogs,
         filter: false
       })
     } else {    
       let filteredPigs = this.state.hogsData.filter(hogObj=> hogObj.greased === true)
       this.setState({
-        greasedHogs: filteredPigs,
+        hogsData: filteredPigs,
         filter: true
       })
     }
@@ -46,8 +47,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          < Nav filterPigs={this.filterPigs} sortByName={this.sortByName} sortByWeight={this.sortByWeight}/>
-          < HogContainer hogs={this.state.filter ? this.state.greasedHogs : this.state.hogsData}/>
+          < Nav />
+          <FilterContainer filterPigs={this.filterPigs} sortByName={this.sortByName} sortByWeight={this.sortByWeight}/>
+          <HogContainer hogs={this.state.hogsData}/>
       </div>
     )
   }
