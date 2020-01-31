@@ -31,7 +31,7 @@ class App extends Component {
     // let pigsSortedByName = this.state.porkData.sortBy(this.state.porkData, name)
     let hogsArr = [...this.state.porkData]
     // console.log(hogsArr)
-    let sortedHogs = hogsArr.sort((hogObj1, hogObj2)=> (hogObj1.weight - hogObj2.weight))
+    let sortedHogs = hogsArr.sort((hogObj1, hogObj2)=> (hogObj1.weight-hogObj2.weight))
     this.setState({
       porkData: sortedHogs
     })
