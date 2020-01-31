@@ -69,7 +69,11 @@ class App extends Component {
           />
           <br></br>
           <br></br>
-          {this.state.greasedHogs[0] ?  <Tiles hogs = {this.state.greasedHogs} alphabetized ={this.state.alphabetized} weighted = {this.state.weighted}/> :  <Tiles hogs = {this.state.hogsArray} alphabetized ={this.state.alphabetized} weighted = {this.state.weighted}/>}
+          <Tiles 
+            hogs = {this.state.greasedHogs[0] ? this.state.greasedHogs: this.state.hogsArray} 
+            alphabetized ={this.state.alphabetized} 
+            weighted = {this.state.weighted}
+          />
       </div>
     )
   }
